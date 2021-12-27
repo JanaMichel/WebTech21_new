@@ -1,1 +1,25 @@
-<p>einfach works!</p>
+
+<div class="container">
+    <h1>Einfache Gerichte</h1>
+
+
+    <table class="table table-striped">
+        <caption>Rezepte</caption>
+        <thead>
+            <tr>
+                <th scope="col">Nr</th>
+                <th scope="col">Name</th>
+                <th scope="col">Zutaten</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor=" let rezept of rezepte; let i=index ">
+                <td>{{ i+1 }} </td>
+                <td>{{ rezept.Name }}</td>
+                <td>{{ rezept.Portionen }}</td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
