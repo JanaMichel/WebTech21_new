@@ -26,15 +26,14 @@ h1,
     }
 
     table {
-      display: inline;
-      margin: 32px;
-      padding: 16px 16px;
-      width: 97%;
+      padding: 16px;
+      width: 100%;
       flex-direction: column;
       align-items: center;
     }
-
-
+    .table tbody tr:hover {
+        background-color: salmon;
+    }
 
 </style>
 
@@ -42,22 +41,19 @@ h1,
     <h1>Einfache Gerichte</h1>
 
 
-    <table class="table table-striped">
-        <caption>Rezepte</caption>
+    <table class="table table-hover table-responsive-md">
         <thead>
             <tr>
                 <th scope="col">Nr</th>
                 <th scope="col">Name</th>
-                <th scope="col">Zutaten</th>
-                
+                <th scope="col">Portionen</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor=" let rezept of rezepte; let i=index ">
                 <td>{{ i+1 }} </td>
                 <td>{{ rezept.Name }}</td>
-                <td>{{ rezept.Portionen }}</td>
-                
+                <td>{{ rezept.Portionen }}</td>        
             </tr>
         </tbody>
     </table>

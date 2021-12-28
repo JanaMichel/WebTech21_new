@@ -8,6 +8,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { StartseiteComponent } from './startseite/startseite.component';
 import { FooterComponent } from './footer/footer.component';
 import { InternationalComponent } from './international/international.component';
+import { CreateComponent } from './create/create.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { InternationalComponent } from './international/international.component'
     ToolbarComponent,
     StartseiteComponent,
     FooterComponent,
-    InternationalComponent
+    InternationalComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
