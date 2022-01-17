@@ -46,6 +46,7 @@ h1,
             <tr>
                 <th scope="col">Nr</th>
                 <th scope="col">Name</th>
+                <th scope="col">Kategorie</th>
                 <th scope="col">Portionen</th>
             </tr>
         </thead>
@@ -53,6 +54,7 @@ h1,
             <tr *ngFor=" let rezept of rezepte; let i=index ">
                 <td>{{ i+1 }} </td>
                 <td>{{ rezept.Name }}</td>
+                <td>{{ rezept.Kategorie }}</td>
                 <td>{{ rezept.Portion }}</td>        
             </tr>
         </tbody>
