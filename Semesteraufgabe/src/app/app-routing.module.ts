@@ -1,4 +1,6 @@
 import { EinfachComponent } from './einfach/einfach.component';
+import { KrustentiereComponent } from './krustentiere/krustentiere.component';
+import { SuessspeisenComponent } from './suessspeisen/suessspeisen.component';
 import { StartseiteComponent } from './startseite/startseite.component';
 import { InternationalComponent } from './international/international.component';
 import { CreateComponent } from './create/create.component';
@@ -13,17 +15,25 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-  path: "Einfach",
-  component: EinfachComponent
+    path: "Einfach",
+    component: EinfachComponent
+  },
+  {
+    path: "Krustentiere",
+    component: KrustentiereComponent
+  },
+  {
+    path: "Suessspeisen",
+    component: SuessspeisenComponent
   },
   {
     path: "International",
     component: InternationalComponent
     },
-    {
-      path: "RezeptNiederschreiben",
-      component: CreateComponent
-      },
+  {
+    path: "RezeptNiederschreiben",
+    component: CreateComponent
+  },
 
 ];
 

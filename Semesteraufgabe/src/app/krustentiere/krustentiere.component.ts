@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../shared/backend.service';
 import { Rezepte } from '../shared/rezepte';
 
+
 @Component({
-  selector: 'app-einfach',
-  templateUrl: './einfach.component.html',
-  styleUrls: ['./einfach.component.css']
+  selector: 'app-krustentiere',
+  templateUrl: './krustentiere.component.html',
+  styleUrls: ['./krustentiere.component.css']
 })
-export class EinfachComponent implements OnInit {
+export class KrustentiereComponent implements OnInit {
   rezepte!: Rezepte[];
 
   constructor(private bs: BackendService) { }

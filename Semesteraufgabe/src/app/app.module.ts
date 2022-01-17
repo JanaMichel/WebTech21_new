@@ -9,6 +9,10 @@ import { StartseiteComponent } from './startseite/startseite.component';
 import { FooterComponent } from './footer/footer.component';
 import { InternationalComponent } from './international/international.component';
 import { CreateComponent } from './create/create.component';
+import { KrustentiereComponent } from './krustentiere/krustentiere.component';
+import { SuessspeisenComponent } from './suessspeisen/suessspeisen.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,11 +22,15 @@ import { CreateComponent } from './create/create.component';
     StartseiteComponent,
     FooterComponent,
     InternationalComponent,
-    CreateComponent
+    CreateComponent,
+    KrustentiereComponent,
+    SuessspeisenComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
