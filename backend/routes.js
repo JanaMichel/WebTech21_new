@@ -20,6 +20,8 @@ router.post('/Rezepte', async(req, res) => {
     res.send(newRezept);
 });
 
+
+
 // post one Rezept via id
 router.get('/Rezepte/:id', async(req, res) => {
     try {
@@ -48,7 +50,7 @@ router.delete('/Rezepte/:id', async(req, res) => {
 // update one member
 router.patch('/Rezepte/:id', async(req, res) => {
     try {
-        const member = await Rezepte.findOne({ _id: req.params.id })
+        const Rezepte = await Rezepte.findOne({ _id: req.params.id })
 
         if (req.body.Name) {
             Rezepte.name = req.body.Name

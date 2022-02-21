@@ -13,6 +13,9 @@ import { KrustentiereComponent } from './krustentiere/krustentiere.component';
 import { SuessspeisenComponent } from './suessspeisen/suessspeisen.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DetailComponent } from './detail/detail.component';
+
 
 @NgModule({
   declarations: [
@@ -24,13 +27,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     InternationalComponent,
     CreateComponent,
     KrustentiereComponent,
-    SuessspeisenComponent
+    SuessspeisenComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import { BackendService } from '../shared/backend.service';
 import { Rezepte } from '../shared/rezepte';
 
 
+
 @Component({
   selector: 'app-krustentiere',
   templateUrl: './krustentiere.component.html',
@@ -13,7 +14,11 @@ export class KrustentiereComponent implements OnInit {
 
   constructor(private bs: BackendService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
+    this.readAll()
+  }
+
+  readAll(): void{
     this.bs.getAll().subscribe(
     (
       response: Rezepte[]) => {
@@ -23,6 +28,10 @@ export class KrustentiereComponent implements OnInit {
       },
       error => console.log(error)
     );
+  }
+
+  delete(id: string): void {
+    console.log("id :" ,id );
   }
 
 }

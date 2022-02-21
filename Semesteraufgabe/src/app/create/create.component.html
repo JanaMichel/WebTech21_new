@@ -11,36 +11,35 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-
-
+    h1,
     h2,
     h3,
     h4,
     h5,
     h6
     {
-      margin: 8px 0;
+      margin: 8px;
     }
   
-    p {
-      margin: 0;
+    label, button {
+      margin: 1%;
+      margin-top: 3%;
     }
 
-    div, h1{
-        margin: 3%;
-        width: 70%;
+    input, select {
+        margin-left: 1%;
+        width: 60%;
     }
-
-    
     
 </style>
 
 <h1>Rezept niederschreiben</h1>
-
-<div>
-    <label for="input-group-text" class="form-label">Rezept beschreibung</label>
+<form>
+    <div class="form-group">
+        <label for="input-group-text" class="form-label">Rezept beschreibung</label>
     <input type="text" class="input-group input-group-sm" id="inp1" placeholder="einen Namen vergeben...">
-</div>
+    </div>
+</form>
 
 
 <div> 
@@ -70,19 +69,20 @@
             <option value="0">Ohne Angabe</option>
     </select>
 </div>
+<!--
 <div>
     <label for="DataList" class="form-label">Rezept anhängen</label>
     <input class="form-control form-select-sm" type="file" id="inp4">
-</div>
+</div> -->
 
 <div>
-        <button type="submit" class="btn btn-secondary mb-3" onklick="checkAndAdd()">
+        <button type="submit" class="btn btn-secondary mb-3" onclick="checkAndAdd()">
             Fertigstellen
         </button>
 </div>
 
 <script>
-    function checkAndAdd() {
-        console.log('Button geklickt!');
+    function checkAndAdd(event) {
+        console.log(event);
     }
 </script>

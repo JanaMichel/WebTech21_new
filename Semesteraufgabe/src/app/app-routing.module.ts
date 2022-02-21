@@ -6,6 +6,7 @@ import { InternationalComponent } from './international/international.component'
 import { CreateComponent } from './create/create.component';
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DetailComponent } from './detail/detail.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
     path: "International",
     component: InternationalComponent
     },
+    {
+      path: "Detail/:id",
+      component: DetailComponent
+      },
   {
     path: "RezeptNiederschreiben",
     component: CreateComponent

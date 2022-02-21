@@ -12,7 +12,11 @@ export class EinfachComponent implements OnInit {
 
   constructor(private bs: BackendService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
+    this.readAll()
+  }
+
+  readAll(): void{
     this.bs.getAll().subscribe(
     (
       response: Rezepte[]) => {
@@ -22,6 +26,10 @@ export class EinfachComponent implements OnInit {
       },
       error => console.log(error)
     );
+  }
+  
+  delete(id: string): void {
+    console.log("id :" ,id );
   }
 
 }

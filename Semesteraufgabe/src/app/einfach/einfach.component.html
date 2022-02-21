@@ -48,15 +48,21 @@ h1,
                 <th scope="col">Name</th>
                 <th scope="col">Kategorie</th>
                 <th scope="col">Portionen</th>
+                <th scope="col">Details</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor=" let rezept of rezepte; let i=index ">
-                <td>{{ i+1 }} </td>
-                <td>{{ rezept.Name }}</td>
-                <td>{{ rezept.Kategorie }}</td>
-                <td>{{ rezept.Portion }}</td>    
-            </tr>
+                
+                    <td>{{ i+1 }} </td>
+                    <td>{{ rezept.Name }}</td>
+                    <td>{{ rezept.Kategorie }}</td>
+                    <td>{{ rezept.Portion }}</td>  
+                    <td>
+                        <a [routerLink]="['/Detail', rezept._id]"> <span class=" bi bi-pencil-square px-5 "></span></a>
+                        <span (click)="delete(rezept._id)" class=" bi bi-trash px-5 "></span>
+                    </td>     
+            </tr>            
         </tbody>
     </table>
 </div>

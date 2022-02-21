@@ -10,7 +10,12 @@ export class BackendService {
   baseUrl = 'http://localhost:3000/Rezepte'
 
   constructor(private http: HttpClient) { }
+  
   getAll(): Observable<Rezepte[]>{
     return this.http.get<Rezepte[]>(this.baseUrl);
+  }
+
+  getOne(id: string): Observable<Rezepte>{
+    return this.http.get<Rezepte>(this.baseUrl + '/' + id);
   }
 }
