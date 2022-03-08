@@ -10,7 +10,7 @@ import { Rezepte } from '../shared/rezepte';
 })
 export class DetailComponent implements OnInit {
   id: string = '';
-  rezepte!: Rezepte[];
+  rezepte!: Rezepte;
 
   constructor(
     private route: ActivatedRoute,
