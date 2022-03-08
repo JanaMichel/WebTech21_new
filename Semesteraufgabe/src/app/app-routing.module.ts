@@ -32,7 +32,7 @@ const routes: Routes = [
     component: InternationalComponent
     },
     {
-      path: "Detail/:id",
+      path: "Rezeptdetail/:id",
       component: DetailComponent
       },
   {

@@ -36,8 +36,8 @@
 <h1>Rezept niederschreiben</h1>
 <form>
     <div class="form-group">
-        <label for="input-group-text" class="form-label">Rezept beschreibung</label>
-    <input type="text" class="input-group input-group-sm" id="inp1" placeholder="einen Namen vergeben...">
+        <label for="input-group-text" class="form-label">Rezept beschreibung </label>
+    <input type="text" class="input-group input-group-sm" id="inp1" formControlName="nameControl" placeholder="einen Namen vergeben...">
     </div>
 </form>
 
@@ -56,9 +56,7 @@
 </div>
 
 <div>    
-    <label for="FormControlInput2" class="form-label">Anzahl Portionen</label>
-</div>
-<div>   
+    <label for="FormControlInput2" class="form-label">Anzahl Portionen</label>   
     <select class="form-select form-select-sm" aria-label="Default select example" id="inp3">
             <option selected>wähle eine Portionsgröße aus</option>
             <option value="2">1-2</option>
@@ -69,11 +67,6 @@
             <option value="0">Ohne Angabe</option>
     </select>
 </div>
-<!--
-<div>
-    <label for="DataList" class="form-label">Rezept anhängen</label>
-    <input class="form-control form-select-sm" type="file" id="inp4">
-</div> -->
 
 <div>
         <button type="submit" class="btn btn-secondary mb-3" onclick="checkAndAdd()">

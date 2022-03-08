@@ -25,10 +25,46 @@ h1,
       margin: 0;
     }
 </style>
+
 <main class="d-flex min-vh-100">
   <fieldset class="container  mt-5">
-      <legend *ngIf="rezepte" class="mb-4">{{ rezepte.Name }}
+      <legend *ngIf="rezepte" class="mb-4">{{ rezepte.Name }} Rezept verbessern
       </legend>
-      
+      <legend *ngIf="!rezepte" class="mb-4">Eintrag aktualisieren</legend>
+      <form [formGroup]="form" (ngSubmit)="update()">
+          <div class="form-group row">
+            <label for="input-group-text" class="col-3 col-form-label">Rezept beschreibung</label>
+            <input type="text" class="col-10 form-control" id="name" formControlName="nameControl" placeholder="einen Namen vergeben...">
+          </div>
+          <div class="form-group row">
+              <label for="input-group-text" class="form-label">Kategorie auswählen</label>
+              <select class="form-select form-select-sm" id="kategorie" formControlName="kategorieControl">
+                  <option selected>wähle eine Kategorie aus</option>
+                  <option value="Einfach">Einfach Gerichte</option>
+                  <option value="International">Internationale Gerichte</option>
+                  <option value="Krustentiere">Krusten- und Meerestiere</option>
+                  <option value="Suesspeisen">Süßspeisen</option>
+              </select>
+          </div>
+          <div class="form-group row">
+            <label for="FormControlInput2" class="form-label">Anzahl Portionen</label>   
+            <select class="form-select form-select-sm" aria-label="Default select example" id="inp3" formControlName="portionControl">
+              <option selected>wähle eine Portionsgröße aus</option>
+              <option value="2">1-2</option>
+              <option value="4">3-4</option>
+              <option value="6">5-6</option>
+              <option value="8">7-8</option>
+              <option value="10">mehr als 8</option>
+              <option value="0">Ohne Angabe</option>
+            </select>
+          </div>
+          <div class="form-group row  justify-content-end">
+            <button type="submit" class="col-4 btn btn-secondary">Verbessern</button>
+            <div class="col-2"></div>
+            <button type="button" class="col-4 btn btn-secondary" (click)="cancel() ">Abbrechen</button>
+        </div>
+      </form>
   </fieldset>
-</main>
+</main> 
+
+

@@ -18,4 +18,12 @@ export class BackendService {
   getOne(id: string): Observable<Rezepte>{
     return this.http.get<Rezepte>(this.baseUrl + '/' + id);
   }
+
+  update(id: string, data: Rezepte): Observable<Rezepte> {
+    return this.http.patch<Rezepte>(this.baseUrl + '/' + id, data);
+  }
+
+  deleteOne(id: string): Observable<any>{
+    return this.http.delete<any>(this.baseUrl + '/' + id, {observe: 'response'});
+  }
 }
