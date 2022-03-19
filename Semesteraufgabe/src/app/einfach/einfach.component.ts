@@ -12,7 +12,7 @@ export class EinfachComponent implements OnInit {
   rezepte!: Rezepte[];
   deleted = false;
 
-  constructor(private bs: BackendService) { }
+  constructor(private bs: BackendService, private router: Router) { }
 
   ngOnInit(): void {  
     this.readAll()
@@ -29,7 +29,7 @@ export class EinfachComponent implements OnInit {
       error => console.log(error)
     );
   }
-  /*
+  
   delete(id: string): void {
     this.bs.deleteOne(id).subscribe(
       (
@@ -54,5 +54,5 @@ export class EinfachComponent implements OnInit {
     this.readAll();
     this.router.navigateByUrl('/Einfach');
   }
-  */
+  
 }

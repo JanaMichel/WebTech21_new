@@ -52,9 +52,9 @@ export class DetailComponent implements OnInit {
               this.rezepte = response;
               console.log(this.rezepte);
               this.form.patchValue({
-                forenameControl: this.rezepte?.Name,
-                surnameControl: this.rezepte?.Kategorie,
-                emailControl: this.rezepte?.Portion
+                nameControl: this.rezepte?.Name,
+                kategorieControl: this.rezepte?.Kategorie,
+                portionControl: this.rezepte?.Portion
               });
               return this.rezepte;
       },
