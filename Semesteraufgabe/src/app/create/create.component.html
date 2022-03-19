@@ -20,28 +20,46 @@
     {
       margin: 8px;
     }
-  
-    label, button {
-      margin: 1%;
-      margin-top: 3%;
-    }
 
-    input, select {
-        margin-left: 1%;
-        width: 60%;
-    }
     
 </style>
 
 <h1>Rezept niederschreiben</h1>
+
+<main class="d-flex min-vh-100">
+    <fieldset class="container  mt-5">
+        <legend *ngIf="rezepte" class="mb-4">Rezept niederschreiben
+        </legend>
+        <legend *ngIf="!rezepte" class="mb-4">Eintrag aktualisieren</legend>
+        <form [formGroup]="form" (ngSubmit)="create()">
+          <div class="form-group row">
+            <label class="col-2 col-form-label" for="name">Name</label>
+            <input type="text" class="col-10 form-control" id="name" placeholder="Name" formControlName="nameControl">
+          </div>
+          <div class="form-group row">
+              <label class="col-2 col-form-label" for="kategorie">Kategorie</label>
+              <input type="text" class="col-10 form-control" id="kategorie" placeholder="Kategorie hinzufügen..." formControlName="kategorieControl">
+          </div>
+          <div class="form-group row">
+              <label class="col-2 col-form-label" for="portion">Kochschritte</label>
+              <input type="text" class="col-10 form-control" id="portion" placeholder="Kochschritte hinzufügen..." formControlName="portionControl">
+  
+          </div>
+          <div class="form-group row  justify-content-end">
+            <button type="submit" class="col-4 btn btn-secondary">Verbessern</button>
+            <div class="col-2"></div>
+            <button type="button" class="col-4 btn btn-secondary" (click)="cancel() ">Abbrechen</button>
+        </div> 
+      </form>
+    </fieldset>
+</main> 
+<!--
 <form>
     <div class="form-group">
         <label for="input-group-text" class="form-label">Rezept beschreibung </label>
     <input type="text" class="input-group input-group-sm" id="inp1" formControlName="nameControl" placeholder="einen Namen vergeben...">
     </div>
 </form>
-
-
 <div> 
     <label for="input-group-text" class="form-label">Kategorie auswählen</label>
 </div>
@@ -78,4 +96,4 @@
     function checkAndAdd(event) {
         console.log(event);
     }
-</script>
+</script> -->

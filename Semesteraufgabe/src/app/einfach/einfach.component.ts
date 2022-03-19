@@ -31,21 +31,24 @@ export class EinfachComponent implements OnInit {
   }
   
   delete(id: string): void {
-    this.bs.deleteOne(id).subscribe(
-      (
-        response: any) => {
-          console.log('response : ', response);
-          if(response.status == 204){
-                  console.log(response.status);
-                  this.reload(true);
-                } else {
-                  console.log(response.status);
-                  console.log(response.error);
-                  this.reload(false);
-                }
-        },
-        error => console.log(error)
-      );
+    if(confirm("Rezept vergessen?"))
+    {
+      this.bs.deleteOne(id).subscribe(
+        (
+          response: any) => {
+            console.log('response : ', response);
+            if(response.status == 204){
+                    console.log(response.status);
+                    this.reload(true);
+                  } else {
+                    console.log(response.status);
+                    console.log(response.error);
+                    this.reload(false);
+                  }
+          },
+          error => console.log(error)
+        );
+    }
   }
   
   reload(deleted: boolean)

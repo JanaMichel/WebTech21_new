@@ -15,7 +15,6 @@ export class DetailComponent implements OnInit {
   id: string = '';
   rezepte!: Rezepte;
   form: FormGroup;
-  
 
   constructor(
     private route: ActivatedRoute,
@@ -63,25 +62,29 @@ export class DetailComponent implements OnInit {
 }
 
 update(): void {
-  const values = this.form.value;
-  this.rezepte.Name = values.nameControl;
-  this.rezepte.Kategorie = values.kategorieControl;
-  this.rezepte.Portion = values.portionControl;
-  this.bs.update(this.id, this.rezepte)
-    .subscribe(
-      response => {
-        console.log(response);
-        console.log(response._id);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  this.router.navigateByUrl('/Einfach');
+  if(window.confirm("Rezept verbessern?"))
+  {
+    const values = this.form.value;
+    this.rezepte.Name = values.nameControl;
+    this.rezepte.Kategorie = values.kategorieControl;
+    this.rezepte.Portion = values.portionControl;
+    this.bs.update(this.id, this.rezepte)
+      .subscribe(
+        response => {
+          console.log(response);
+          console.log(response._id);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    this.router.navigateByUrl('/Einfach');
+    }
 }
 
 cancel(): void {
-
+  this.location.back();
 }
+
 
 }

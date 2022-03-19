@@ -32,10 +32,21 @@ h1,
       </legend>
       <legend *ngIf="!rezepte" class="mb-4">Eintrag aktualisieren</legend>
       <form [formGroup]="form" (ngSubmit)="update()">
-          <div class="form-group row">
-            <label for="input-group-text" class="col-3 col-form-label">Rezept beschreibung</label>
-            <input type="text" class="col-10 form-control" id="name" formControlName="nameControl" placeholder="einen Namen vergeben...">
-          </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label" for="name">Name</label>
+          <input type="text" class="col-10 form-control" id="name" placeholder="Name" formControlName="nameControl">
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="kategorie">Kategorie</label>
+            <input type="text" class="col-10 form-control" id="kategorie" placeholder="Kategorie hinzufügen..." formControlName="kategorieControl">
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="portion">Kochschritte</label>
+            <input type="text" class="col-10 form-control" id="portion" placeholder="Kochschritte hinzufügen..." formControlName="portionControl">
+
+        </div>
+          
+          <!--
           <div class="form-group row">
               <label for="input-group-text" class="form-label">Kategorie auswählen</label>
               <select class="form-select form-select-sm" id="kategorie" formControlName="kategorieControl">
@@ -57,12 +68,12 @@ h1,
               <option value="10">mehr als 8</option>
               <option value="0">Ohne Angabe</option>
             </select>
-          </div>
+          </div> -->
           <div class="form-group row  justify-content-end">
             <button type="submit" class="col-4 btn btn-secondary">Verbessern</button>
             <div class="col-2"></div>
             <button type="button" class="col-4 btn btn-secondary" (click)="cancel() ">Abbrechen</button>
-        </div>
+        </div> 
       </form>
   </fieldset>
 </main> 

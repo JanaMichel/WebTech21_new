@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../shared/backend.service';
 import { Rezepte } from '../shared/rezepte';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-suessspeisen',
@@ -9,8 +10,9 @@ import { Rezepte } from '../shared/rezepte';
 })
 export class SuessspeisenComponent implements OnInit {
   rezepte!: Rezepte[];
+  deleted = false;
 
-  constructor(private bs: BackendService) { }
+  constructor(private bs: BackendService, private router: Router) { }
 
   ngOnInit(): void {  
     this.readAll()
@@ -29,7 +31,31 @@ export class SuessspeisenComponent implements OnInit {
   }
 
   delete(id: string): void {
-    console.log("id :" ,id );
+    if(confirm("Rezept vergessen?"))
+    {
+      this.bs.deleteOne(id).subscribe(
+        (
+          response: any) => {
+            console.log('response : ', response);
+            if(response.status == 204){
+                    console.log(response.status);
+                    this.reload(true);
+                  } else {
+                    console.log(response.status);
+                    console.log(response.error);
+                    this.reload(false);
+                  }
+          },
+          error => console.log(error)
+        );
+    }
+  }
+  
+  reload(deleted: boolean)
+  {
+    this.deleted = deleted;
+    this.readAll();
+    this.router.navigateByUrl('/Suessspeisen');
   }
 
 }
