@@ -26,74 +26,61 @@
 
 <h1>Rezept niederschreiben</h1>
 
-<main class="d-flex min-vh-100">
-    <fieldset class="container  mt-5">
-        <legend *ngIf="rezepte" class="mb-4">Rezept niederschreiben
-        </legend>
-        <legend *ngIf="!rezepte" class="mb-4">Eintrag aktualisieren</legend>
-        <form [formGroup]="form" (ngSubmit)="create()">
-          <div class="form-group row">
-            <label class="col-2 col-form-label" for="name">Name</label>
-            <input type="text" class="col-10 form-control" id="name" placeholder="Name" formControlName="nameControl">
-          </div>
-          <div class="form-group row">
-              <label class="col-2 col-form-label" for="kategorie">Kategorie</label>
-              <input type="text" class="col-10 form-control" id="kategorie" placeholder="Kategorie hinzufügen..." formControlName="kategorieControl">
-          </div>
-          <div class="form-group row">
-              <label class="col-2 col-form-label" for="portion">Kochschritte</label>
-              <input type="text" class="col-10 form-control" id="portion" placeholder="Kochschritte hinzufügen..." formControlName="portionControl">
-  
-          </div>
-          <div class="form-group row  justify-content-end">
-            <button type="submit" class="col-4 btn btn-secondary">Verbessern</button>
-            <div class="col-2"></div>
-            <button type="button" class="col-4 btn btn-secondary" (click)="cancel() ">Abbrechen</button>
+<div class="container">
+    <form [formGroup]="rezepteform" autocomplete="off">
+        <div class="mb-1">
+            <label for="name" class="form-label">Name</label>
+            <div class="input-group has-validation">
+                <input type="text" #name [ngClass]="{'form-control': true, 'is-invalid': rezepteform.get('name')?.invalid &&
+                (rezepteform.get('name')?.dirty || rezepteform.get('name')?.touched)}" id="name" name="name"
+                    formControlName="name" placeholder="Name">
+                <div class="invalid-feedback">
+                    Ausfüllen notwendig.
+                </div>
+            </div>
+        </div>
+        <div class="mb-1">
+            <label for="kategorie" class="form-label">Kategorie: {{rezepteform.get('kategorie')?.value}} </label>
+            <div class="input-group has-validation">
+                <select [ngClass]="{'form-select': true, 'is-invalid': rezepteform.get('kategorie')?.invalid &&
+                    (rezepteform.get('kategorie')?.dirty || rezepteform.get('kategorie')?.touched)}"
+                    aria-label="Default select example" formControlName="kategorie">
+                    <option value=""> --Select--</option>
+                    <option value="Einfache Gerichte" selected="rezepteform.get('portion')?.value=='Einfache Gerichte'">Einfache Gerichte</option>
+                    <option value="Internationale Gerichte" selected="rezepteform.get('portion')?.value=='Internationale Gerichte'">Internationale Gerichte</option>
+                    <option value="Krustentiere" selected="rezepteform.get('portion')?.value=='Krustentiere'">Krustentiere und Fisch</option>
+                    <option value="Suessspeisen" selected="rezepteform.get('portion')?.value=='Suessspeisen'">Suessspeisen</option>
+                </select>
+                <div class="invalid-feedback">
+                    Ausfüllen notwendig.
+                </div>
+            </div>
         </div> 
-      </form>
-    </fieldset>
-</main> 
-<!--
-<form>
-    <div class="form-group">
-        <label for="input-group-text" class="form-label">Rezept beschreibung </label>
-    <input type="text" class="input-group input-group-sm" id="inp1" formControlName="nameControl" placeholder="einen Namen vergeben...">
-    </div>
-</form>
-<div> 
-    <label for="input-group-text" class="form-label">Kategorie auswählen</label>
+        <div class="mb-1">
+            <label for="portion" class="form-label">Portion: {{rezepteform.get('portion')?.value}} </label>
+            <div class="input-group has-validation">
+                <select [ngClass]="{'form-select': true, 'is-invalid': rezepteform.get('portion')?.invalid &&
+                    (rezepteform.get('portion')?.dirty || rezepteform.get('portion')?.touched)}"
+                    aria-label="Default select example" formControlName="portion">
+                    <option value=""> --Select--</option>
+                    <option value="1" selected="rezepteform.get('portion')?.value=='1'">1-2</option>
+                    <option value="3" selected="rezepteform.get('portion')?.value=='3'">3-4</option>
+                    <option value="5" selected="rezepteform.get('portion')?.value=='5'">5-6</option>
+                    <option value="7" selected="rezepteform.get('portion')?.value=='7'">7-8</option>
+                    <option value="0" selected="rezepteform.get('portion')?.value=='0'">ohne Angabe</option>
+                </select>
+                <div class="invalid-feedback">
+                    Ausfüllen notwendig.
+                </div>
+            </div>
+        </div>
+        <div class="mb-1">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button (click)="create()" [disabled]="rezepteform.invalid" class="btn btn-primary" type="button">Niederschreiben
+                    </button>
+                    <button type="button" class="col-4 btn btn-secondary" (click)="cancel() ">Abbrechen</button>
+            </div>
+        </div>
+        
+    </form>
 </div>
-<div>
-    <select class="form-select form-select-sm" id="inp2">
-        <option selected>wähle eine Kategorie aus</option>
-        <option value="Einfach">Einfach Gerichte</option>
-        <option value="International">Internationale Gerichte</option>
-        <option value="Krustentiere">Krusten- und Meerestiere</option>
-        <option value="Suesspeisen">Süßspeisen</option>
-    </select>
-</div>
-
-<div>    
-    <label for="FormControlInput2" class="form-label">Anzahl Portionen</label>   
-    <select class="form-select form-select-sm" aria-label="Default select example" id="inp3">
-            <option selected>wähle eine Portionsgröße aus</option>
-            <option value="2">1-2</option>
-            <option value="4">3-4</option>
-            <option value="6">5-6</option>
-            <option value="8">7-8</option>
-            <option value="10">mehr als 8</option>
-            <option value="0">Ohne Angabe</option>
-    </select>
-</div>
-
-<div>
-        <button type="submit" class="btn btn-secondary mb-3" onclick="checkAndAdd()">
-            Fertigstellen
-        </button>
-</div>
-
-<script>
-    function checkAndAdd(event) {
-        console.log(event);
-    }
-</script> -->

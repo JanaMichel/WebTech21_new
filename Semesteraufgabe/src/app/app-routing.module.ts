@@ -31,10 +31,10 @@ const routes: Routes = [
     path: "International",
     component: InternationalComponent
     },
-    {
+  {
       path: "Rezeptdetail/:id",
       component: DetailComponent
-      },
+    },
   {
     path: "RezeptNiederschreiben",
     component: CreateComponent

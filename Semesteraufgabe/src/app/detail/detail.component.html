@@ -31,7 +31,7 @@ h1,
       <legend *ngIf="rezepte" class="mb-4">{{ rezepte.Name }} Rezept verbessern
       </legend>
       <legend *ngIf="!rezepte" class="mb-4">Eintrag aktualisieren</legend>
-      <form [formGroup]="form" (ngSubmit)="update()">
+      <form [formGroup]="rezepteform" (ngSubmit)="update()">
         <div class="form-group row">
           <label class="col-2 col-form-label" for="name">Name</label>
           <input type="text" class="col-10 form-control" id="name" placeholder="Name" formControlName="nameControl">

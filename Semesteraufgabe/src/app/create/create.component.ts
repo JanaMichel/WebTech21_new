@@ -14,7 +14,7 @@ export class CreateComponent implements OnInit {
 
   id: string = '';
   rezepte!: Rezepte;
-  form: FormGroup;
+  rezepteform: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,11 +24,11 @@ export class CreateComponent implements OnInit {
     private router: Router
     ) 
     { 
-      this.form = this.fb.group(
+      this.rezepteform = this.fb.group(
         {
-          nameControl: ['', Validators.required, Validators.minLength(3)],
-          kategorieControl: ['', Validators.required],
-          portionControl: ['', Validators.required],
+          name: ['', Validators.required, Validators.minLength(3)],
+          kategorie: ['', Validators.required],
+          portion: ['', Validators.required],
         }
       );
     }
@@ -37,7 +37,7 @@ export class CreateComponent implements OnInit {
     ngOnInit(): void {  
       this.id = this.route.snapshot.paramMap.get('id') || '';
       this.readOne(this.id);
-      this.form.setValue({
+      this.rezepteform.setValue({
         nameControl: this.rezepte?.Name,
         kategorieControl: this.rezepte?.Kategorie,
         portionControl: this.rezepte?.Portion
@@ -50,7 +50,7 @@ export class CreateComponent implements OnInit {
         response: Rezepte) => {
                 this.rezepte = response;
                 console.log(this.rezepte);
-                this.form.patchValue({
+                this.rezepteform.setValue({
                   nameControl: this.rezepte?.Name,
                   kategorieControl: this.rezepte?.Kategorie,
                   portionControl: this.rezepte?.Portion
@@ -59,54 +59,31 @@ export class CreateComponent implements OnInit {
         },
         error => console.log(error)
       );
-  }
+    }
   
-  update(): void {
-    if(window.confirm("Rezept verbessern?"))
-    {
-      const values = this.form.value;
-      this.rezepte.Name = values.nameControl;
-      this.rezepte.Kategorie = values.kategorieControl;
-      this.rezepte.Portion = values.portionControl;
-      this.bs.update(this.id, this.rezepte)
-        .subscribe(
-          response => {
-            console.log(response);
-            console.log(response._id);
-          },
-          error => {
-            console.log(error);
-          }
-        );
-      this.router.navigateByUrl('/Einfach');
-      }
-  }
-
-  create(): void {
-    if(window.confirm("Rezept verbessern?"))
-    {
-      const values = this.form.value;
-      this.rezepte.Name = values.nameControl;
-      this.rezepte.Kategorie = values.kategorieControl;
-      this.rezepte.Portion = values.portionControl;
-      this.bs.create(this.id, this.rezepte)
-        .subscribe(
-          response => {
-            console.log(response);
-            console.log(response._id);
-          },
-          error => {
-            console.log(error);
-          }
-        );
-      this.router.navigateByUrl('/Einfach');
-      }
-  }
-
-
-cancel(): void {
-  this.location.back();
-}
-
+    create(): void {
+      if(window.confirm("Rezept niederschreiben?"))
+      {
+        const values = this.rezepteform.value;
+        this.rezepte.Name = values.nameControl;
+        this.rezepte.Kategorie = values.kategorieControl;
+        this.rezepte.Portion = values.portionControl;
+        this.bs.create(this.id, this.rezepte)
+          .subscribe(
+            response => {
+              console.log(response);
+              console.log(response._id);
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        this.router.navigateByUrl('/');
+        }
+    }
+  
+    cancel(): void {
+      this.location.back();
+    }
 
 }
