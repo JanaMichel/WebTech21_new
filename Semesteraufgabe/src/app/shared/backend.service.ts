@@ -23,11 +23,16 @@ export class BackendService {
     return this.http.patch<Rezepte>(this.baseUrl + '/' + id, data);
   }
 
-  create(id: string, data: Rezepte): Observable<Rezepte> {
-    return this.http.post<Rezepte>(this.baseUrl + '/' + id, data);
+  create(data: Rezepte): Observable<Rezepte> {
+    return this.http.post<Rezepte>(this.baseUrl, data);
   }
 
   deleteOne(id: string): Observable<any>{
     return this.http.delete<any>(this.baseUrl + '/' + id, {observe: 'response'});
   }
+
+  findByTitle(_Kategorie: string): Observable<any[]> {
+    return this.http.get<Rezepte[]>(this.baseUrl);
+  }
+
 }

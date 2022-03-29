@@ -45,7 +45,7 @@
                 <select [ngClass]="{'form-select': true, 'is-invalid': rezepteform.get('kategorie')?.invalid &&
                     (rezepteform.get('kategorie')?.dirty || rezepteform.get('kategorie')?.touched)}"
                     aria-label="Default select example" formControlName="kategorie">
-                    <option value=""> --Select--</option>
+                    <option value=""> Kategorie auswählen...</option>
                     <option value="Einfache Gerichte" selected="rezepteform.get('portion')?.value=='Einfache Gerichte'">Einfache Gerichte</option>
                     <option value="Internationale Gerichte" selected="rezepteform.get('portion')?.value=='Internationale Gerichte'">Internationale Gerichte</option>
                     <option value="Krustentiere" selected="rezepteform.get('portion')?.value=='Krustentiere'">Krustentiere und Fisch</option>
@@ -62,7 +62,7 @@
                 <select [ngClass]="{'form-select': true, 'is-invalid': rezepteform.get('portion')?.invalid &&
                     (rezepteform.get('portion')?.dirty || rezepteform.get('portion')?.touched)}"
                     aria-label="Default select example" formControlName="portion">
-                    <option value=""> --Select--</option>
+                    <option value=""> Portion auswählen...</option>
                     <option value="1" selected="rezepteform.get('portion')?.value=='1'">1-2</option>
                     <option value="3" selected="rezepteform.get('portion')?.value=='3'">3-4</option>
                     <option value="5" selected="rezepteform.get('portion')?.value=='5'">5-6</option>

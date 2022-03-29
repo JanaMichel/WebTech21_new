@@ -37,11 +37,6 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {  
     this.id = this.route.snapshot.paramMap.get('id') || '';
     this.readOne(this.id);
-    this.rezepteform.patchValue({
-      nameControl: this.rezepte?.Name,
-      kategorieControl: this.rezepte?.Kategorie,
-      portionControl: this.rezepte?.Portion
-    });
   }
  
   readOne(id: string): void {

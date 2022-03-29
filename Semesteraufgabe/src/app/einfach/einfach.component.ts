@@ -10,16 +10,17 @@ import { Router } from '@angular/router';
 })
 export class EinfachComponent implements OnInit {
   rezepte!: Rezepte[];
+  
   deleted = false;
 
   constructor(private bs: BackendService, private router: Router) { }
 
   ngOnInit(): void {  
-    this.readAll()
+    this.searchTitle()
   }
 
-  readAll(): void{
-    this.bs.getAll().subscribe(
+  searchTitle(): void{
+    this.bs.findByTitle("Einfache Gerichte").subscribe(
     (
       response: Rezepte[]) => {
               this.rezepte = response;
@@ -29,6 +30,8 @@ export class EinfachComponent implements OnInit {
       error => console.log(error)
     );
   }
+
+  
   
   delete(id: string): void {
     if(confirm("Rezept vergessen?"))
@@ -54,7 +57,7 @@ export class EinfachComponent implements OnInit {
   reload(deleted: boolean)
   {
     this.deleted = deleted;
-    this.readAll();
+    this.searchTitle();
     this.router.navigateByUrl('/Einfach');
   }
   

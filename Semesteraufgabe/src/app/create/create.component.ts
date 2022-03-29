@@ -34,41 +34,30 @@ export class CreateComponent implements OnInit {
     }
 
   
-    ngOnInit(): void {  
+    ngOnInit(): void {
       this.id = this.route.snapshot.paramMap.get('id') || '';
       this.readOne(this.id);
-      this.rezepteform.setValue({
-        nameControl: this.rezepte?.Name,
-        kategorieControl: this.rezepte?.Kategorie,
-        portionControl: this.rezepte?.Portion
-      });
     }
-   
     readOne(id: string): void {
       this.bs.getOne(id).subscribe(
       (
         response: Rezepte) => {
                 this.rezepte = response;
-                console.log(this.rezepte);
-                this.rezepteform.setValue({
-                  nameControl: this.rezepte?.Name,
-                  kategorieControl: this.rezepte?.Kategorie,
-                  portionControl: this.rezepte?.Portion
-                });
+                console.log(this.rezepte)
                 return this.rezepte;
         },
         error => console.log(error)
       );
-    }
+  }
   
     create(): void {
       if(window.confirm("Rezept niederschreiben?"))
       {
         const values = this.rezepteform.value;
-        this.rezepte.Name = values.nameControl;
-        this.rezepte.Kategorie = values.kategorieControl;
-        this.rezepte.Portion = values.portionControl;
-        this.bs.create(this.id, this.rezepte)
+        this.rezepte.Name = values.name;
+        this.rezepte.Kategorie = values.kategorie;
+        this.rezepte.Portion = values.portion;
+        this.bs.create(this.rezepte)
           .subscribe(
             response => {
               console.log(response);
@@ -76,6 +65,7 @@ export class CreateComponent implements OnInit {
             },
             error => {
               console.log(error);
+              
             }
           );
         this.router.navigateByUrl('/');
