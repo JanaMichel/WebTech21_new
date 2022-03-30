@@ -42,7 +42,7 @@ Frontend: This project was generated with [Angular CLI](https://github.com/angul
 Datenbank: MongoBD
 
 ## Installation
-
+Lade das Git-Repository in eine Entwicklungsumgebung. Anschließend lade die entsprechenden Pakete Bootstrap-Icons herunter und gebe den Befehl npm install einmalig ein um alle Pakete herunterzuladen. Nun kann im Terminal das Frontend mit "ng serve" und das Backend mit "npm run watch" zum starten gebracht werden. 
 
 
 
